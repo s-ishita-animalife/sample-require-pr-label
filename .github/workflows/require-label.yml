@@ -1,0 +1,21 @@
+name: Require Label
+on:
+    pull_request:
+        types: [opened, labeled, unlabeled, synchronize]
+        branches:
+            - main
+jobs:
+    require-label:
+        runs-on: ubuntu-latest
+        permissions:
+            issues: write
+            pull-requests: write
+        steps:
+            - uses: mheap/github-action-required-labels@v5
+              with:
+                  mode: minimum
+                  count: 1
+                  labels: |
+                      検証環境テストOK
+                      検証環境テスト不要
+                      検証環境テストスキップ
