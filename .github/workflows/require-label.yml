@@ -1,9 +1,11 @@
-name: Required Labels
+name: Require Label
 on:
     pull_request:
         types: [opened, labeled, unlabeled, synchronize]
+        branches:
+            - main
 jobs:
-    label:
+    require-label:
         runs-on: ubuntu-latest
         permissions:
             issues: write
